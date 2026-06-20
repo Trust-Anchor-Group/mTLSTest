@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Module xmlns="http://waher.se/Schema/ModuleManifest.xsd">
+	<Folder name="Root">
+		<Content fileName="mTLSTest.md"/>
+		<Content fileName="mTLSTest.ws"/>
+	</Folder>
+</Module>

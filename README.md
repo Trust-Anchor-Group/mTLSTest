@@ -42,7 +42,23 @@ install on your Neuron(R).
 | Package information                                                                                                              ||
 |:-----------------|:---------------------------------------------------------------------------------------------------------------|
 | Package          | `TAG.mTLSTest.package`                                                                                         |
-| Installation key | `` |
+| Installation key | `Of8CrE/a51VBCqGV4LguRBQeDN5jj4WYDdXaVF4IiHOTiQbXMoI2OcBO9YwrikWzvaeT8wWtgYYA2cb5e811b78906330cf6c911df3812f3` |
+
+Installing package from the *Chat Admin*:
+
+```
+install nobackup TAG.mTLSTest.package Of8CrE/a51VBCqGV4LguRBQeDN5jj4WYDdXaVF4IiHOTiQbXMoI2OcBO9YwrikWzvaeT8wWtgYYA2cb5e811b78906330cf6c911df3812f3
+```
+
+Endpoints for Testing
+------------------------
+
+TAG provides the following endpoints for testing client implementations:
+
+| Endpints                                                ||
+|:-------------|:------------------------------------------|
+| Web Page:    | `https://lab.tagroot.io:8088/mTLSTest.md` |
+| Web Service: | `https://lab.tagroot.io:8088/mTLSTest.ws` |
 
 
 Project Files
