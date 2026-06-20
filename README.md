@@ -84,6 +84,11 @@ shows how this presentation may look like.
 
 ![Figure 2: Web Page Presentation](Images/WebPagePresentation.png 648 420)
 
+<img src="Images/CertificateDialog.png" alt="Figure 1: Certificate dialog in Edge" width="550" height="498" />
+
+<img src="Images/WebPagePresentation.png" alt="Figure 2: Web Page Presentation" width="648" height="420" />
+
+
 ### Testing using Command Line
 
 TBD
