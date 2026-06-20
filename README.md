@@ -14,3 +14,75 @@ permitting automated testing.
 .NET Standard for maximum portability. using command-line arguments it allows a tester to
 automate testing of mTLS connectivity. It also provides a simple application that can be used
 as a template, or to troubleshoot mTLS connectivity issues.
+
+You can try the web page directly on the lab neuron, by clicking [here](https://lab.tagroot.io/mTLSTest.md).
+You can also access the [web service](https://lab.tagroot.io/mTLSTest.ws). 
+
+Enabling mTLS on a Neuron
+----------------------------
+
+To enable mTLS on a Neuron, you need to configure the Neuron to at least optionally accept
+client certificates. This is done in the `gateway.config` file. It is not recommended to
+enable this on the entire Neuron, as it will make web browsers show needless certificate
+dialogs to users, as they nagivate to the Neuron. Instead, it is recommended, you open 
+secondary HTTPS ports for mTLS, where mTLS is enabled. You can require, or optionally accept
+client certificates. For the purpose of this service, it is sufficient to optionally accept
+client certificates, as it permits both users authenticating themselves using mTLS, and users
+that employ other mechanisms to authenticate themselves.
+
+The article [Controlling Multual TLS on a port level](https://lab.tagroot.io/Community/Post/Controlling_Multual_TLS_on_a_port_level)
+explains how to configure the Neuron so an alternative HTTPS port is opened, with mTLS enabled.
+
+Installable Package
+----------------------
+
+The contents of the `mTLSTest` project is available in an installable package that you can 
+install on your Neuron(R).
+
+| Package information                                                                                                              ||
+|:-----------------|:---------------------------------------------------------------------------------------------------------------|
+| Package          | `TAG.mTLSTest.package`                                                                                         |
+| Installation key | `` |
+
+
+Project Files
+----------------
+
+| File               | Description                                                                                                  |
+|:-------------------|:-------------------------------------------------------------------------------------------------------------|
+| `Root\mTLSTest.md` | Displays the user's client information on a web page.                                                        |
+| `Root\mTLSTest.ws` | A simple REST API web service returning the the same information in a JSON object, when called using `POST`. |
+
+Gateway.config
+-----------------
+
+To simplify development, once the project is cloned, add a `FileFolder` reference
+to your repository folder in your [gateway.config file](https://lab.tagroot.io/Documentation/IoTGateway/GatewayConfig.md). 
+This allows you to test and run your changes to Markdown and Javascript immediately, 
+without having to synchronize the folder contents with an external 
+host, or recompile or go through the trouble of generating a distributable software 
+package just for testing purposes.
+
+Example of how to point a web folder to your project folder:
+
+```
+<FileFolders>
+  <FileFolder webFolder="/mTLSTest" folderPath="C:\My Projects\mTLSTest\Root"/>
+</FileFolders>
+```
+
+**Note**: Once the file folder reference is added, you need to restart the IoT Gateway service for 
+the change to take effect.
+
+**Note 2**:  Once the gateway is restarted, the source for the files is in the new location. Any 
+changes you make in the corresponding `ProgramData` subfolder will have no effect on what you see 
+via the browser.
+
+**Note 3**: This file folder is only necessary on your developer machine, to give you real-time 
+updates as you edit the files in your developer folder. It is not necessary in a production 
+environment, as the files are copied into the correct folders when the package is installed.
+
+**Note 4**: The example page is available directly at the root (`/mTLSTest.md` for example) on a 
+Neuron(R) with the package installed. But, with a `FileFolder` reference, you need to access the
+project page via the web folder you specified in the `FileFolder` element (`/mTLSTest/mTLSTest.md` 
+in this example).
