@@ -103,10 +103,12 @@ TBD
 Project Files
 ----------------
 
-| File               | Description                                                                                                           |
-|:-------------------|:----------------------------------------------------------------------------------------------------------------------|
-| `Root\mTLSTest.md` | Displays the user's client information on a web page.                                                                 |
-| `Root\mTLSTest.ws` | A simple REST API web service returning the the same information in a JSON object, when called using `GET` or `POST`. |
+| File                         | Description                                                                                                           |
+|:-----------------------------|:----------------------------------------------------------------------------------------------------------------------|
+| `Root\mTLSTest.md`           | Displays the user's client information on a web page.                                                                 |
+| `Root\mTLSTest.ws`           | A simple REST API web service returning the the same information in a JSON object, when called using `GET` or `POST`. |
+| `mTlsPing\mTlsPingClient.cs` | A .NET Standard library for communicating with the `mTLSTest.ws` web service endpoint, to test mTLS connectivity.     |
+| `mTlsPingApi\Program.cs`     | A Command-Line tool for testing mTLS connectivity using the `mTlsPing` API class.                                     |
 
 **Note**: `GET` calls can be cached in routers and proxies between the client and the Neuron.
 It is preferrable to use `POST` for testing purposes, to ensure the request is not cached and 
