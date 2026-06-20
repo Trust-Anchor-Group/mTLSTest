@@ -82,12 +82,12 @@ shows how this presentation may look like.
 
 <figure>
 	<img src="Images/CertificateDialog.png" alt="Certificate dialog in Edge" width="550" height="498" />
-	<figcaption>Figure 1: Certificate dialog in Edge</figcaption>
+	<figcaption><b>Figure 1</b>: Certificate dialog in Edge</figcaption>
 </figure>
 
 <figure>
 	<img src="Images/WebPagePresentation.png" alt="Web Page Presentation" width="648" height="420" />
-	<figcaption>Figure 2: Web Page Presentation</figcaption>
+	<figcaption><b>Figure 2</b>: Web Page Presentation</figcaption>
 </figure>
 
 
