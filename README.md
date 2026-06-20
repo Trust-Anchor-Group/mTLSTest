@@ -60,14 +60,50 @@ TAG provides the following endpoints for testing client implementations:
 | Web Page:    | `https://lab.tagroot.io:8088/mTLSTest.md` |
 | Web Service: | `https://lab.tagroot.io:8088/mTLSTest.ws` |
 
+### Testing using Browser
+
+You can test mTLS using a Browser that allows clients to select certificates when the option
+of mTLS is available. The following steps and images show how the Edge browser can be used
+to test the mTLS connection. Similar steps can be followed for other browsers that support 
+mTLS.
+
+1.	Open an *In-Private* window in Edge. This will ensure the connection starts fresh, with no
+knowledge about capabilities, and no cached information about the server. This step is 
+important to ensure the certificate dialog in the next step is triggered.
+
+2.	Navigate to the web page endpoint for testing mTLS: https://lab.tagroot.io:8088/mTLSTest.md
+
+3.	A certificate dialog will appear. This dialog will contain client certificates available to
+the browser. The certificates shown in Figure 1 below, are self-signed certificates created by
+the browser itself. Select a certificate and click *OK*.
+
+4.	A page will appear with the information about the certificate you selected. Figure 2 below
+shows how this presentation may look like.
+
+[Figure 1: Certificate dialog in Edge](Images/CertificateDialog.png)
+
+[Figure 2: Web Page Presentation](Images/WebPagePresentation.png)
+
+### Testing using Command Line
+
+TBD
+
+### Testing using Neuron Script
+
+TBD
+
 
 Project Files
 ----------------
 
-| File               | Description                                                                                                  |
-|:-------------------|:-------------------------------------------------------------------------------------------------------------|
-| `Root\mTLSTest.md` | Displays the user's client information on a web page.                                                        |
-| `Root\mTLSTest.ws` | A simple REST API web service returning the the same information in a JSON object, when called using `POST`. |
+| File               | Description                                                                                                           |
+|:-------------------|:----------------------------------------------------------------------------------------------------------------------|
+| `Root\mTLSTest.md` | Displays the user's client information on a web page.                                                                 |
+| `Root\mTLSTest.ws` | A simple REST API web service returning the the same information in a JSON object, when called using `GET` or `POST`. |
+
+**Note**: `GET` calls can be cached in routers and proxies between the client and the Neuron.
+It is preferrable to use `POST` for testing purposes, to ensure the request is not cached and 
+the response is always up to date.
 
 Gateway.config
 -----------------
