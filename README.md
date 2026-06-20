@@ -80,9 +80,15 @@ the browser itself. Select a certificate and click *OK*.
 4.	A page will appear with the information about the certificate you selected. Figure 2 below
 shows how this presentation may look like.
 
-<img src="Images/CertificateDialog.png" alt="Figure 1: Certificate dialog in Edge" width="550" height="498" />
+<figure>
+	<img src="Images/CertificateDialog.png" alt="Certificate dialog in Edge" width="550" height="498" />
+	<figcaption>Figure 1: Certificate dialog in Edge</figcaption>
+</figure>
 
-<img src="Images/WebPagePresentation.png" alt="Figure 2: Web Page Presentation" width="648" height="420" />
+<figure>
+	<img src="Images/WebPagePresentation.png" alt="Web Page Presentation" width="648" height="420" />
+	<figcaption>Figure 2: Web Page Presentation</figcaption>
+</figure>
 
 
 ### Testing using Command Line
