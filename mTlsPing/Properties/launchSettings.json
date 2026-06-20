@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "mTlsPing": {
+      "commandName": "Project",
+      "commandLineArgs": "-h lab.tagroot.io -p 8088 -f ..\\..\\..\\..\\mTlsPingApi.Test\\Data\\certificate.pfx -w testexamplecom"
+    }
+  }
+}

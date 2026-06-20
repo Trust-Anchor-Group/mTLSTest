@@ -102,7 +102,63 @@ for more details.
 
 ### Testing using Command Line
 
-TBD
+The [`mTlsPing`](mTlsPing) project contains a command-line tool for testing mTLS connectivity 
+using the `mTlsPingApi` class. This tool can be used to verify mTLS connectivity to any number
+of machines running the `mTLSTest.ws` web service, by running the command-line tool and
+providing the necessary command-line arguments. 
+
+Usage:
+
+```
+mTlsPing -h <host> -p <port> -f <certificate file name> 
+         -w <certificate password> [-t] [-x] [-m <timeout>] [-?]
+```
+
+The following table lists the command-line arguments for the tool:
+
+| Argument                     | Description                                                                                                 |
+|:-----------------------------|:------------------------------------------------------------------------------------------------------------|
+| `-h <host>`                  | Host name of Neuron.                                                                                        |
+| `-p <port>`                  | HTTPS port where mTLS is enabled.                                                                           |
+| `-f <certificate file name>` | File name of client certificate. The certificate must contain the private key.                              |
+| `-w <certificate password>`  | Password for the client certificate.                                                                        |
+| `-t`                         | Trust server certificate. This option makes the tool trust the server certificate, even if it is not valid. |
+| `-x`                         | Use proxy if available. This option allows the tool to use a proxy server if one is configured.             |
+| `-m <timeout>`               | Timeout in milliseconds. Default is 10000 (10 seconds).                                                     |
+| `-?`                         | Show a help message.                                                                                        |
+
+You can test the tool using the following command-line arguments. Run the tool from the
+repository folder. Assuming the tool has been compiled with Visual Studio (or similar), in
+Debug mode, the following will perform the same task, as the unit test described earlier
+(new line characters added only for readability):
+
+```
+mTlsPing\bin\Debug\net8.0\mTlsPing.exe
+	-h lab.tagroot.io 
+	-p 8088 
+	-f mTlsPingApi.Test\Data\certificate.pfx
+	-w testexamplecom
+```
+
+Or as one row:
+
+```
+mTlsPing\bin\Debug\net8.0\mTlsPing.exe -h lab.tagroot.io  -p 8088 -f mTlsPingApi.Test\Data\certificate.pfx -w testexamplecom
+```
+
+The result from this command, is the following:
+
+```
+Client endpoint: 186.78.234.15:55114
+Host: lab.tagroot.io
+Encrypted: True
+Cipher strength: 255
+Client certificate: True
+Issuer: E=test@example.com, OU=D, O=example.com, L=Stockholm, S=Stockholm, C=SE, CN=localhost
+Subject: E=test@example.com, OU=D, O=example.com, L=Stockholm, S=Stockholm, C=SE, CN=localhost
+Serial number: 00947fd2f9ef86d010
+Valid: False
+```
 
 ### Testing using Neuron Script
 
