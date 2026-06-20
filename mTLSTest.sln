@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mTlsPing", "mTlsPing\mTlsPi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mTlsPingApi", "mTlsPingApi\mTlsPingApi.csproj", "{05209AF6-F35E-4647-9DEE-AFB1A5A138EC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mTlsPingApi.Test", "mTlsPingApi.Test\mTlsPingApi.Test.csproj", "{F14E759A-3FB1-40BA-A5AC-3644E1A65718}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,6 +42,10 @@ Global
 		{05209AF6-F35E-4647-9DEE-AFB1A5A138EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05209AF6-F35E-4647-9DEE-AFB1A5A138EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05209AF6-F35E-4647-9DEE-AFB1A5A138EC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F14E759A-3FB1-40BA-A5AC-3644E1A65718}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F14E759A-3FB1-40BA-A5AC-3644E1A65718}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F14E759A-3FB1-40BA-A5AC-3644E1A65718}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F14E759A-3FB1-40BA-A5AC-3644E1A65718}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

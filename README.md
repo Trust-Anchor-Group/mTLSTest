@@ -90,6 +90,15 @@ shows how this presentation may look like.
 	<figcaption><strong>Figure 2</strong>: Web Page Presentation</figcaption>
 </figure>
 
+### Testing using Unit Test
+
+The [`mTlsPingApi.Test`](mTlsPingApi.Test) project contains simple unit tests for the 
+`mTlsPingApi` class, which is used to communicate with the `mTLSTest.ws` web service endpoint.
+Use Visual Studio or similar to run these tests. These tests can be used to verify mTLS
+connectivity to any number of machines running the `mTLSTest.ws` web service, by providing
+the necessary data rows. The unit test project also contains a self-signed certificate that
+can be used for testing purposes. See the [`ApiTests.cs`](mTlsPingApi.Test/ApiTests.cs) file 
+for more details.
 
 ### Testing using Command Line
 
@@ -103,12 +112,15 @@ TBD
 Project Files
 ----------------
 
-| File                         | Description                                                                                                           |
-|:-----------------------------|:----------------------------------------------------------------------------------------------------------------------|
-| `Root\mTLSTest.md`           | Displays the user's client information on a web page.                                                                 |
-| `Root\mTLSTest.ws`           | A simple REST API web service returning the the same information in a JSON object, when called using `GET` or `POST`. |
-| `mTlsPing\mTlsPingClient.cs` | A .NET Standard library for communicating with the `mTLSTest.ws` web service endpoint, to test mTLS connectivity.     |
-| `mTlsPingApi\Program.cs`     | A Command-Line tool for testing mTLS connectivity using the `mTlsPing` API class.                                     |
+| File                                    | Description                                                                                                           |
+|:----------------------------------------|:----------------------------------------------------------------------------------------------------------------------|
+| `Root\mTLSTest.md`                      | Displays the user's client information on a web page.                                                                 |
+| `Root\mTLSTest.ws`                      | A simple REST API web service returning the the same information in a JSON object, when called using `GET` or `POST`. |
+| `mTlsPing\Program.cs`                   | A Command-Line tool for testing mTLS connectivity using the `mTlsPing` API class.                                     |
+| `mTlsPingApi\mTlsPingClient.cs`         | A .NET Standard library for communicating with the `mTLSTest.ws` web service endpoint, to test mTLS connectivity.     |
+| `mTlsPingApi\mTlsInfo.cs`               | Response class containing information returned from the mTLSTest Web Service.                                         |
+| `mTlsPingApi.Test\ApiTests.cs`          | Simple unit tests for the `mTlsPingApi` API class.                                                                    |
+| `mTlsPingApi.Test\Data\certificate.pfx` | Simple self-signed certificate that can be used for testing mTLS connectivity.                                        |
 
 **Note**: `GET` calls can be cached in routers and proxies between the client and the Neuron.
 It is preferrable to use `POST` for testing purposes, to ensure the request is not cached and 

@@ -42,7 +42,7 @@ namespace mTlsPingApi
 		/// <returns>Information about the connection.</returns>
 		/// <exception cref="ArgumentException">If the certificate do not contain
 		/// a private key.</exception>
-		public static Task Ping(string Host, int Port, string CertificateFileName,
+		public static Task<MTlsInfo> Ping(string Host, int Port, string CertificateFileName,
 			string CertificatePassword, bool TrustServer = false, bool UseProxy = false,
 			int TimeoutMs = 10000)
 		{
@@ -68,7 +68,7 @@ namespace mTlsPingApi
 		/// <returns>Information about the connection.</returns>
 		/// <exception cref="ArgumentException">If the certificate do not contain
 		/// a private key.</exception>
-		public static async Task Ping(string Host, int Port, X509Certificate2 Certificate, 
+		public static async Task<MTlsInfo> Ping(string Host, int Port, X509Certificate2 Certificate, 
 			bool TrustServer = false, bool UseProxy = false, int TimeoutMs = 10000)
 		{
 			if (!Certificate.HasPrivateKey)
@@ -169,9 +169,10 @@ namespace mTlsPingApi
 			Response.EnsureSuccessStatusCode();
 
 			byte[] Bin = await Response.Content.ReadAsByteArrayAsync();
-			JsonDocument Doc = JsonDocument.Parse(Encoding.UTF8.GetString(Bin));
-			
+			string s = Encoding.UTF8.GetString(Bin);
+			JsonDocument Doc = JsonDocument.Parse(s);
 
+			return new MTlsInfo(Doc);
 		}
 	}
 }
