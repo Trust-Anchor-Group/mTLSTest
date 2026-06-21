@@ -160,9 +160,25 @@ Serial number: 00947fd2f9ef86d010
 Valid: False
 ```
 
-### Testing using Neuron Script
+### Restrictions on Client Certificates
 
-TBD
+For a client certificate to be possible to use for mTLS authentication, the following must
+be true about the certificate:
+
+* The Certificate MUST contain a private key. Without a private key, the certificate cannot be
+used to create signatures, and therefore not be used to authenticate the client to the server.
+
+* IF the certificate contains a Key Usage (KU) extension (which restricts the ways in which the
+certificate can be used), it MUST allow for digital signatures to be made using the certificate.
+IF the KU extension exists, and digital signaatures are not allowed, even though the certificate
+has a private key and can create signatures, it is not allowed to do so for authentication, and
+will therefore not be selected for use in mTLS authentication.
+
+* IF the certificate contains an Extended Key Usage (EKU) extension (which contains extended
+restrictions for the certificate), it MUST allow the certificate to be used for TLS Web Client 
+Authentication (OID `1.3.6.1.5.5.7.3.2`). If the EKU extension exists, and TLS Web Client 
+Authentication is not present in the list of extended key usages, the certificate will not be
+selected for use in mTLS authentication, as the CA does not allow it to be used this way.
 
 
 Project Files

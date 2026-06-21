@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Http;
 using System.Net.Security;
 using System.Security.Authentication;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Text.Json;
@@ -68,13 +69,42 @@ namespace mTlsPingApi
 		/// <returns>Information about the connection.</returns>
 		/// <exception cref="ArgumentException">If the certificate do not contain
 		/// a private key.</exception>
-		public static async Task<MTlsInfo> Ping(string Host, int Port, X509Certificate2 Certificate, 
+		public static async Task<MTlsInfo> Ping(string Host, int Port, X509Certificate2 Certificate,
 			bool TrustServer = false, bool UseProxy = false, int TimeoutMs = 10000)
 		{
 			if (!Certificate.HasPrivateKey)
 			{
 				throw new ArgumentException("Certificate must have a private key.",
 					nameof(Certificate));
+			}
+
+			foreach (X509Extension Extension in Certificate.Extensions)
+			{
+				if (Extension is X509KeyUsageExtension KeyUsageExtension)
+				{
+					// Restriction only exists, if the extension is present.
+
+					if (!KeyUsageExtension.KeyUsages.HasFlag(X509KeyUsageFlags.DigitalSignature))
+					{
+						throw new ArgumentException("Certificate cannot be used to create digital signatures.",
+							nameof(Certificate));
+					}
+				}
+				else if (Extension is X509EnhancedKeyUsageExtension EnhancedKeyUsageExtension)
+				{
+					// Restriction only exists, if the extension is present.
+
+					bool TlsWebClientAuthentication = false;
+
+					foreach (Oid UsageOid in EnhancedKeyUsageExtension.EnhancedKeyUsages)
+						TlsWebClientAuthentication |= UsageOid.Value == "1.3.6.1.5.5.7.3.2";
+
+					if (!TlsWebClientAuthentication)
+					{
+						throw new ArgumentException("Certificate is not valid for TLS client authentication.",
+							nameof(Certificate));
+					}
+				}
 			}
 
 			bool RemoteCertificateValidationCallback(object Sender,
