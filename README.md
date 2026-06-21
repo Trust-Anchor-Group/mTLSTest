@@ -180,6 +180,23 @@ Authentication (OID `1.3.6.1.5.5.7.3.2`). If the EKU extension exists, and TLS W
 Authentication is not present in the list of extended key usages, the certificate will not be
 selected for use in mTLS authentication, as the CA does not allow it to be used this way.
 
+### ACME Protocol
+
+The Neuron uses the ACME (Automated Certificate Management Environment) protocol to 
+automatically create and update certificates for itself. By default, the Neuron uses 
+[Let's Encrypt](https://letsencrypt.org/) as a CA, but any ACME-compliant CA can be used.
+[`acmeclients.com`](https://acmeclients.com/certificate-authorities/) maintains a list of
+ACME-compliant CAs. When selecting a CA for client certificates, it is important to ensure
+the CA allows for client certificates to be created (see previous section).
+
+#### A note about Let's Encrypt
+
+Let's Encrypt has made a decision to [no longer support client certificates](https://letsencrypt.org/2025/05/14/ending-tls-client-authentication).
+After June 2026, Let's Encrypt certificates can no longer be used for mTLS. Since Let's Encrypt
+is a free service, it is difficult to require certain features from them. For the purpose of
+production, a service agreement with a commercial CA supporting ACME and client certificates 
+is therefore recommended, to ensure long-term support.
+
 
 Project Files
 ----------------
