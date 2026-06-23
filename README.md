@@ -170,7 +170,7 @@ used to create signatures, and therefore not be used to authenticate the client 
 
 * IF the certificate contains a Key Usage (KU) extension (which restricts the ways in which the
 certificate can be used), it MUST allow for digital signatures to be made using the certificate.
-IF the KU extension exists, and digital signaatures are not allowed, even though the certificate
+IF the KU extension exists, and digital signatures are not allowed, even though the certificate
 has a private key and can create signatures, it is not allowed to do so for authentication, and
 will therefore not be selected for use in mTLS authentication.
 
